@@ -1,0 +1,73 @@
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.js"></script>
+
+<div id="container"></div>
+
+<script>
+    // Prepare demo data
+    // Data is joined to map using value of 'hc-key' property by default.
+    // See API docs for 'joinBy' for more info on linking data and map.
+    var data = [
+        ["andhra pradesh", 7], ["bihar", 2], ["chhattisgarh", 1], ["nct of delhi", 28], ["gujarat", 29], ["haryana", 12], ["himachal pradesh", 2], ["karnataka", 33], ["kerala", 60], ["madhya pradesh", 6], ["maharashtra", 71], ["odisha", 2], ["puducherry", 1], ["punjab", 21], ["rajasthan", 26], ["tamil nadu", 7], ["telangana", 22], ["chandigarh", 6], ["jammu and kashmir", 4], ["ladakh", 13], ["uttar pradesh", 30], ["uttarakhand", 3], ["west bengal", 7]];
+
+    // Create the chart
+    Highcharts.mapChart('container', {
+        chart: {
+            map: 'countries/in/custom/in-all-disputed',
+            height: 700
+        },
+
+        title: {
+            text: 'India with COVID-19 Status'
+        },
+
+        subtitle: {
+            text: 'Source map: <a href="http://code.highcharts.com/mapdata/countries/in/custom/in-all-disputed.js">India with COVID-19 Status</a>'
+        },
+
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+
+        colorAxis: {
+            min: 0
+        },
+
+        series: [{
+            data: data,
+            name: 'Random data',
+            states: {
+                hover: {
+                    color: '#BADA55'
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}'
+            }
+        }]
+    });
+
+</script>
+
+<style>
+    body {
+        height: 700px;
+    }
+
+    #container {
+        height: 700px;
+        ;
+        margin: 0 auto;
+    }
+
+    .loading {
+        margin-top: 10em;
+        text-align: center;
+        color: gray;
+    }
+</style>
